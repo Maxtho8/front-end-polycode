@@ -15,7 +15,7 @@ export default function Challenge() {
     <>
       <Grid container component="main">
         <Grid sx={{ bgcolor: "#363831", color: "white" }} pt={2} item xs={12} md={12} lg={5}>
-          <Container sx={{ maxHeight: "calc(100vh - 284px)", overflow: "auto" }}>
+          <Container sx={{ maxHeight: "calc(100vh - 284px)", overflow: "auto", pb: 4 }}>
             <MuiMarkdown>{`## Challenge: Hello World
             console.log() `}</MuiMarkdown>
           </Container>

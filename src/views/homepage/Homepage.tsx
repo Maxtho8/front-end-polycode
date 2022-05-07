@@ -12,7 +12,7 @@ export default function Homepage() {
       <CssBaseline />
       <MainPanel title="Spring Challenge 2022" image_url={SpringChallengeImg} />
       <Container style={{ position: "relative" }}>
-        <h1>Top challenges</h1>
+        <h1>Last viewed</h1>
         <Typography
           variant="h6"
           color={theme.palette.primary.main}
@@ -41,7 +41,7 @@ export default function Homepage() {
         </Grid>
       </Container>
       <Container style={{ position: "relative" }}>
-        <h1>Last challenge</h1>
+        <h1>New challenges</h1>
         <Typography
           variant="h6"
           color={theme.palette.primary.main}
