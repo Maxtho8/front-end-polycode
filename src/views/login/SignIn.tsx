@@ -10,21 +10,43 @@ import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-
+import MuiAlert, { AlertProps } from "@mui/material/Alert";
 import { theme } from "../theme/DO";
 import CodingBackground from "./../../assets/img/coding.png";
 import Logo from "./../../assets/img/logo.png";
+import useLogin from "../../hooks/useLogin";
+import { Snackbar } from "@mui/material";
+
+const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(props, ref) {
+  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+});
 
 export default function SignInSide() {
   const [isRegister, setIsRegister] = React.useState(false);
+  const [email, setEmail] = React.useState("");
+  const [password, setPassword] = React.useState("");
+  const response = useLogin(email, password);
+  const [error, setError] = React.useState(false);
 
+  React.useEffect(() => {
+    if (!!response) {
+      setError(response.error);
+      if (!error) {
+      }
+    }
+  }, [response]);
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get("email"),
-      password: data.get("password"),
-    });
+    setEmail(data.get("email") as string);
+    setPassword(data.get("password") as string);
+  };
+
+  const handleClose = (event: React.SyntheticEvent | Event, reason?: string) => {
+    if (reason === "clickaway") {
+      return;
+    }
+    setError(false);
   };
 
   return (
@@ -79,6 +101,22 @@ export default function SignInSide() {
                   </Link>
                 </Grid>
               </Grid>
+              {error && (
+                <Snackbar
+                  sx={{ width: "100%" }}
+                  anchorOrigin={{
+                    vertical: "bottom",
+                    horizontal: "right",
+                  }}
+                  open={error}
+                  autoHideDuration={6000}
+                  onClose={handleClose}
+                >
+                  <Alert sx={{ bgcolor: "red", color: "white" }} severity="error">
+                    {response.errorMessage}
+                  </Alert>
+                </Snackbar>
+              )}
             </Box>
           </Box>
         </Grid>
