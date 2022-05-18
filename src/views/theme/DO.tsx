@@ -1,6 +1,6 @@
 import createTheme from "@mui/material/styles/createTheme";
 
-export const theme = createTheme({
+export let theme = createTheme({
   palette: {
     primary: {
       main: "#AE00FF",
@@ -17,5 +17,11 @@ export const theme = createTheme({
         },
       },
     },
+  },
+});
+
+theme = createTheme(theme, {
+  buttons: {
+    main: "orange",
   },
 });

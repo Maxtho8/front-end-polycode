@@ -4,13 +4,15 @@ import AceEditor from "react-ace";
 import ExecuteButton from "../../components/buttons/ExecuteButton";
 import MuiMarkdown from "mui-markdown";
 import { Box } from "@mui/material";
+import useCodeRunner from "../../hooks/useCodeRunner";
 
 import "ace-builds/src-noconflict/mode-javascript";
 import "ace-builds/src-noconflict/theme-monokai";
 import "ace-builds/src-noconflict/ext-language_tools";
-import { bgcolor } from "@mui/system";
 
 export default function Challenge() {
+  const [runCode, output] = useCodeRunner();
+
   return (
     <>
       <Grid container component="main">
