@@ -5,10 +5,12 @@ import { Container, Grid, Typography } from "@mui/material";
 import { CssBaseline } from "@mui/material";
 import { theme } from "../../views/theme/DO";
 import SpringChallengeImg from "../../assets/img/spring_challenge.png";
+import NavBar from "./../../components/navigation/NavBar";
 
 export default function Homepage() {
   return (
     <body>
+      <NavBar />
       <CssBaseline />
       <MainPanel title="Spring Challenge 2022" image_url={SpringChallengeImg} />
       <Container style={{ position: "relative" }}>
