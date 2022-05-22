@@ -22,6 +22,11 @@ export default function Challenge() {
   const [challenge] = useChallenge(window.location.pathname.split("/")[2]);
   const [markdown] = useMarkdown(window.location.pathname.split("/")[2]);
 
+  //use effect add id chall to localStorage
+  useEffect(() => {
+    localStorage.setItem("idChall", window.location.pathname.split("/")[2]);
+  }, []);
+
   React.useEffect(() => {
     setExpectedOutput(challenge.expected);
     setLangage(challenge.langage);
