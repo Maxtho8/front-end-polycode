@@ -5,7 +5,8 @@ import Homepage from "./views/homepage/Homepage";
 import Challenge from "./views/challenge/Challenge";
 import ThemeProvider from "@mui/material/styles/ThemeProvider";
 import { theme } from "./views/theme/DO";
-import SignIn from "./views/login/SignIn";
+import SignIn from "./views/auth/SignIn";
+import SignUpSide from "./views/auth/SignUp";
 import Landingpage from "./views/landing/Landingpage";
 
 function App() {
@@ -14,8 +15,9 @@ function App() {
       <Routes>
         <Route path="/" element={<Landingpage />} />
         <Route path="/home" element={<Homepage />} />
-        <Route path="/challenge" element={<Challenge />} />
-        <Route path="/auth" element={<SignIn />} />
+        <Route path="/challenge/:id" element={<Challenge />} />
+        <Route path="/login" element={<SignIn />} />
+        <Route path="/register" element={<SignUpSide />} />
       </Routes>
     </ThemeProvider>
   );

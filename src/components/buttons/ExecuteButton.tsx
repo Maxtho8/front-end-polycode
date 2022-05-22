@@ -1,7 +1,7 @@
 import React from "react";
 import Button from "@mui/material/Button";
 
-export default function ExecuteButton(props: { isMini?: boolean }) {
+export default function ExecuteButton() {
   return (
     <Button
       style={{

@@ -1,46 +1,99 @@
-# Getting Started with Create React App
+# POLYCODE
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Polycode est un projet réalisé dans le cadre de ma formation DevOps à Polytech Montpellier
 
-## Available Scripts
+# Front End 
 
-In the project directory, you can run:
+## Technologies utilisées    
 
-### `npm start`
+### React
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Le front est réalisé avec le framework React. 
+En cours nous avons eu l'occasion d'essayer les deux plus gros concurrent de React , Vue et Angular. D'un  point de vue plus personnel, je trouve le JSX très pratique. 
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
 
-### `npm test`
+### React - Router
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Router est utilisé dans le fichier App.js ou toutes les routes sont définis. Mon choix c'est porté sur ce module car il est simple d'utilisation et c'est aussi le plus populaire.
 
-### `npm run build`
+### Material-UI
+ 
+Mon choix c'est porté sur cette library car elle est très populaire , et permet un énorme gain de temps avec des composants déja stylisés.
+Le front-end utilise beaucoup MUI puisqu'il est composé en majorité de Grid et de Container qui permettent de d'adapter la page à toutes les dimensions.
+J'utilise aussi les thèmes qui permettent de styliser tout les composants MUI avec des attributs commun.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Axios 
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Pour les requêtes à l'API j'ai choisis Axios car c'est un client HTTP puissant basé sur les promesses. De plus j'ai déjà eu l'occasion de l'utiliser lors de la réalisation du Pokédex
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### MUI to Markdown
 
-### `npm run eject`
+Permet de convertir le markdown en élément MUI
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Pages disponibles
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+/ Landing page
+/home/ Page d'acceuil avec tout les challenges
+/
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+| Path   |      Description      |
+|----------|:-------------:|
+| /|  Landing page |
+| /home |    Page d'acceuil avec tout les challenges   |
+| /challenge/:id | Editeur de code pour le challenge | 
+| /auth/login | Page de connexion | 
+| /auth/register | Page d'inscription | 
 
-## Learn More
+## Editeur de code
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+![img](https://i.ibb.co/sygT06n/image.png)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+En haut en droite la consigne du challenge en markdown. Juste en dessous les tests à réussir pour valider le challenge
+La console permet d'avoir un retour sur l'exécution du programme.
+
+
+# API 
+
+https://github.com/Maxtho8/polycode-api
+
+
+# Infrastructure
+
+### Postgres
+
+Pour la base de donnée de donnée j'ai choisi Postgres (conteneurisé) ce qui me permet de déployer rapidement plusieurs instances. 
+Le mode relationnel est plus adapté pour la gestion d'utilisateur, cependant je voulais aussi mettre en place une base NoSQL pour garder une trace des exécutions 
+
+### Watchtower
+
+J'utilise Watchtower qui regarde toutes les 5 minutes si une nouvelle version de l'image de l'API est disponible, si oui il relance un nouveau container.
+
+### Nginx
+
+NGINX est configuré en tant que reverse proxy. 
+Il me permet de rediriger une requêtes vers un certain port.
+Par exemple api.polycode.xyz redirige vers le port 3000 et runner.polycode.xyz vers le port 3001
+
+
+# Runners
+
+https://github.com/Maxtho8/runner-polycode
+
+# Post mortem
+
+### Points négatifs : 
+
+Je n'ai pas terminé le projet et les consignes demandé à cause du mauvaise gestion du temps.
+J'ai passé beaucoup trop de temps sur le runner à vouloir m'obstiner à faire tourner mon code dans un container alors qu'une simple exécution en ligne de commande aurai suffit. 
+De plus j'ai perdu beaucoup de temps sur l'API avec NestJS car c'était la première fois que je l'utilise. Un bug dépedance circulaire m'a bloqué presque 2 jours .par exemple...
+Je voulais mettre une deuxième base de donnée pour garder un historique d'éxécution du code.  
+Au final il manque beaucoup de fonctionnalitée : 
+- la confirmation par mail 
+- la validation du challenge après réussite
+- historique de consultation des challenges
+
+### Points Positifs
+
+Cependant même si le rendu final n'est pas celui attendu je suis quand même très satisfait du résultat d'un point de vue technique. J'ai vu et appris énormément de chose comme la gestion des flux et de container en node. J'ai pu mettre en place une CI/CD, watchtower que n'avais jamais utilisé. 
+Même si j'ai eu beaucoup de difficulté au départ avec Nest il m'a permit à la fin un énorme gain de temps.
