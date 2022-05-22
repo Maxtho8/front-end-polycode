@@ -72,6 +72,8 @@ NGINX est configuré en tant que reverse proxy.
 Il me permet de rediriger une requête vers un certain port.
 Par exemple api.polycode.xyz redirige vers le port 3000 et runner.polycode.xyz vers le port 3001
 
+### S3
+Pour servir les fichiers statiques comme les images ou les fichiers markdown , j'utilise un bucket S3 qui a un accès publique
 
 # Runners
 
