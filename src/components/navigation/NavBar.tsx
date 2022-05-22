@@ -16,6 +16,7 @@ import MailIcon from "@mui/icons-material/Mail";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import MoreIcon from "@mui/icons-material/MoreVert";
 import Logo from "./../../assets/img/logo-min.png";
+import { Link } from "react-router-dom";
 
 export default function NavBar() {
   const pages = ["Practice", "Certification", "Challenges"];
@@ -95,10 +96,12 @@ export default function NavBar() {
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
         <Toolbar>
-          <Typography variant="h6" noWrap component="div" sx={{ display: { xs: "none", sm: "block" }, mr: 4 }}>
-            <img width={28} src={Logo} alt="logo" />
-            {"Polycode"}
-          </Typography>
+          <Link style={{ color: "white", textDecoration: "none" }} to="/home">
+            <Typography variant="h6" noWrap component="div" sx={{ display: { xs: "none", sm: "block" }, mr: 4 }}>
+              <img width={28} src={Logo} alt="logo" />
+              {"Polycode"}
+            </Typography>
+          </Link>
           {pages.map(page => (
             <MenuItem key={page}>
               <Typography textAlign="center">{page}</Typography>

@@ -18,6 +18,7 @@ export default function MiniPanel(props: { title: string; image_url: string }) {
           item
           xs={12}
           sx={{
+            backgroundColor: "grey",
             backgroundImage: `url(${props.image_url})`,
             backgroundRepeat: "no-repeat",
             backgroundSize: "cover",

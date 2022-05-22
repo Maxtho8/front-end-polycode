@@ -3,14 +3,14 @@ import { useState, useEffect } from "react";
 import { API_URL } from "../config";
 
 interface User {}
-export default function useLogin(email: string, password: string) {
+export default function useRegister(username: string, email: string, password: string) {
   // response state
   const [response, setResponse] = useState<any>({ data: null, error: false, errorMessage: null });
 
   const sendRequest = () => {
-    if (email != "" && password != "") {
+    if (email != "" && password != "" && username != "") {
       axios
-        .post(API_URL + "/auth/login", { email, password })
+        .post(API_URL + "/auth/register", { username, email, password })
         .then(res => {
           setResponse({ data: res.data, error: false, errorMessage: null });
         })

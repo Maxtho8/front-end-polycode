@@ -32,7 +32,7 @@ export default function Landingpage() {
             </Typography>
           </Grid>
           <Grid mt={4} p={4} item xs={12} sx={{ textAlign: "center" }}>
-            <Link to="/auth">
+            <Link to="/login">
               {" "}
               <StartButton />
             </Link>
