@@ -67,18 +67,17 @@ export default function Homepage() {
           {"View more >"}
         </Typography>
         <Grid container item spacing={1}>
-          <Grid item md={3} sm={6} xs={12}>
-            <MiniPanel title="Spring Challenge 2022" image_url="https://source.unsplash.com/random/400x400?nature,water" />
-          </Grid>
-          <Grid item md={3} sm={6} xs={12}>
-            <MiniPanel title="Spring Challenge 2022" image_url="https://source.unsplash.com/random/400x400?nature,water" />
-          </Grid>
-          <Grid item md={3} sm={6} xs={12}>
-            <MiniPanel title="Spring Challenge 2022" image_url="https://source.unsplash.com/random/400x400?nature,water" />
-          </Grid>
-          <Grid item md={3} sm={6} xs={12}>
-            <MiniPanel title="Spring Challenge 2022" image_url="https://source.unsplash.com/random/400x400?nature,water" />
-          </Grid>
+          {challenges
+            .filter((challenge: any) => challenge.id === localStorage.getItem("idChall"))
+            .map((challenge: any) => {
+              return (
+                <Grid item xs={12} md={6} lg={4}>
+                  <Link to={`/challenge/${challenge.id}`}>
+                    <MiniPanel title={challenge.title} image_url={BUCKET_URL + "/" + challenge.img_path} />
+                  </Link>
+                </Grid>
+              );
+            })}
         </Grid>
       </Container>
     </body>
